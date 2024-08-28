@@ -25,12 +25,12 @@ export class SignupComponent {
       .signUp(this.username, this.email, this.password)
       .subscribe(
         (response) => {
-          console.log('Signup successful', response);
+          window.alert('Signup successful');
           // Redirect to login page or another route after successful signup
           this.router.navigate(['/login']);
         },
         (error) => {
-          console.error('Signup failed', error);
+          window.alert('Signup failed');
         }
       );
   }

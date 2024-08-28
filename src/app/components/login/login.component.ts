@@ -17,13 +17,11 @@ export class LoginComponent {
     this.bookingService.logIn(this.email, this.password).subscribe(
       (response) => {
         const { password_digest } = response;
-        // if (password_digest) {
         this.bookingService.saveCredentials(password_digest);
         window.location.reload();
-        // }
       },
       (error) => {
-        console.error('Login failed', error);
+        window.alert('Login failed');
       }
     );
   }

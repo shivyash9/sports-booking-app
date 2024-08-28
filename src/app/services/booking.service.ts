@@ -17,7 +17,6 @@ export class BookingService {
 
   // Fetch a specific event by ID
   getEventById(eventId: number): Observable<any> {
-    console.log('Hiiiii');
     return this.http.get<any>(`${this.baseUrl}/events/${eventId}`);
   }
 

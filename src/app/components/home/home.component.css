@@ -1,73 +1,119 @@
+/* Container for the whole page */
 .home-container {
-  padding: 20px;
+  font-family: Arial, sans-serif;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f9;
 }
 
+/* Title of the page */
 .page-title {
-  font-size: 2em;
-  margin-bottom: 20px;
   text-align: center;
   color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
 }
 
+/* Filter Section */
+.filter-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filter-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Events List */
 .events-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
 }
 
+/* Individual Event Card */
 .event-card {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 100%;
-  max-width: 350px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.3s ease;
 }
 
 .event-card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .event-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
   margin-bottom: 10px;
 }
 
 .event-title {
-  font-size: 1.5em;
+  font-size: 1.8em;
   margin: 0;
   color: #333;
 }
 
 .event-time {
-  font-size: 0.9em;
+  display: block;
   color: #666;
+  font-size: 0.9em;
 }
 
 .event-description {
-  font-size: 1em;
   color: #555;
-  margin-bottom: 10px;
+  font-size: 1em;
+  margin: 10px 0;
 }
 
 .event-details {
-  border-top: 1px solid #eee;
-  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #444;
 }
 
 .event-details h3 {
-  margin: 0;
-  font-size: 1.1em;
-  color: #333;
+  margin: 0 0 5px 0;
+  color: #007bff;
 }
 
 .event-details p {
-  margin: 5px 0;
-  color: #444;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filter-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-input {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .event-details {
+    flex-direction: column;
+  }
 }

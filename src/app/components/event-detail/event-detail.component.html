@@ -1,0 +1,29 @@
+<div class="event-detail-container">
+  <h1 class="event-title">{{ event.name }}</h1>
+
+  <div class="event-header">
+    <span class="event-time">
+      {{ event.start_time | date : "short" }} -
+      {{ event.end_time | date : "short" }}
+    </span>
+  </div>
+
+  <p class="event-description">{{ event.description }}</p>
+
+  <div class="event-info">
+    <div class="event-sport">
+      <h3>Sport:</h3>
+      <p>{{ event.sport.name }}</p>
+      <p>{{ event.sport.description }}</p>
+    </div>
+    <div class="event-location">
+      <h3>Location:</h3>
+      <p>{{ event.location.name }}</p>
+      <p>{{ event.location.address }}, {{ event.location.pincode }}</p>
+    </div>
+    <div class="event-seats">
+      <h3>Available Seats:</h3>
+      <p>{{ event.available_seats }}</p>
+    </div>
+  </div>
+</div>

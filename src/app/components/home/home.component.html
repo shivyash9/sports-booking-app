@@ -1,26 +1,47 @@
 <div class="home-container">
   <h1 class="page-title">Upcoming Events</h1>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <input
+      type="text"
+      [(ngModel)]="filterName"
+      (ngModelChange)="filterEvents()"
+      placeholder="Filter by event name"
+      class="filter-input"
+    />
+    <input
+      type="text"
+      [(ngModel)]="filterPincode"
+      (ngModelChange)="filterEvents()"
+      placeholder="Filter by pin code"
+      class="filter-input"
+    />
+  </div>
+
   <div class="events-list">
-    <div *ngFor="let event of events" class="event-card">
-      <div class="event-header">
-        <h2 class="event-title">{{ event.name }}</h2>
-        <span class="event-time"
-          >{{ event.start_time | date : "short" }} -
-          {{ event.end_time | date : "short" }}</span
-        >
-      </div>
-      <p class="event-description">{{ event.description }}</p>
-      <div class="event-details">
-        <div class="event-sport">
-          <h3>Sport:</h3>
-          <p>{{ event.sport.name }}</p>
+    <div *ngFor="let event of filteredEvents" class="event-card">
+      <a [routerLink]="['/event', event.id]" class="event-link">
+        <div class="event-header">
+          <h2 class="event-title">{{ event.name }}</h2>
+          <span class="event-time">
+            {{ event.start_time | date : "short" }} -
+            {{ event.end_time | date : "short" }}
+          </span>
         </div>
-        <div class="event-location">
-          <h3>Location:</h3>
-          <p>{{ event.location.name }}</p>
-          <p>{{ event.location.address }}, {{ event.location.pincode }}</p>
+        <p class="event-description">{{ event.description }}</p>
+        <div class="event-details">
+          <div class="event-sport">
+            <h3>Sport:</h3>
+            <p>{{ event.sport.name }}</p>
+          </div>
+          <div class="event-location">
+            <h3>Location:</h3>
+            <p>{{ event.location.name }}</p>
+            <p>{{ event.location.address }}, {{ event.location.pincode }}</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

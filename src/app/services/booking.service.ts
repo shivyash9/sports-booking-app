@@ -48,4 +48,26 @@ export class BookingService {
 
     return this.http.post<any>(`${this.baseUrl}/login`, null, { params });
   }
+
+  // Save token and password_digest to localStorage
+  saveCredentials(passwordDigest: string, token: string = 'not_implemented') {
+    localStorage.setItem('authToken', token);
+    localStorage.setItem('user', passwordDigest);
+  }
+
+  // Get token from localStorage
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
+  // Get password_digest from localStorage
+  getPasswordDigest(): string | null {
+    return localStorage.getItem('passwordDigest');
+  }
+
+  // Remove token and password_digest from localStorage
+  removeCredentials() {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('passwordDigest');
+  }
 }

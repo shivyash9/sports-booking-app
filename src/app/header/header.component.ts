@@ -17,6 +17,9 @@ export class HeaderComponent {
 
   checkLoginStatus(): void {
     this.isLoggedIn = !!localStorage.getItem('user');
+    if (!!this.isLoggedIn) {
+      this.router.navigate(['/']);
+    }
   }
 
   login(): void {
@@ -26,6 +29,8 @@ export class HeaderComponent {
   logout(): void {
     localStorage.removeItem('user');
     this.isLoggedIn = false;
-    this.router.navigate(['/']);
+    window.location.reload();
+
+    // this.router.navigate(['/']);
   }
 }

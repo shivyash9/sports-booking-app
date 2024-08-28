@@ -11,6 +11,8 @@ import { BookingService } from './services/booking.service';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { EventDetailComponent } from './components/event-detail/event-detail.com
     ProfileComponent,
     HeaderComponent,
     EventDetailComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

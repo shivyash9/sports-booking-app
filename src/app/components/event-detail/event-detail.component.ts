@@ -17,15 +17,32 @@ export class EventDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
-    const id = Number(idParam); // Convert idParam to a number
+    const id = Number(idParam);
 
     if (!isNaN(id)) {
       this.eventService.getEventById(id).subscribe((event) => {
         this.event = event;
       });
     } else {
-      // Handle invalid ID case
       console.error('Invalid event ID');
+    }
+  }
+
+  onBookNow() {
+    const user_id = parseInt(localStorage.getItem('authToken') || '1');
+    if (this.event.available_seats > 0) {
+      this.eventService.bookSlot(user_id, this.event.id).subscribe(
+        (response) => {
+          alert('Booking successful!');
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Booking failed', error);
+          alert('Booking failed. Please try again later.');
+        }
+      );
+    } else {
+      alert('No seats available.');
     }
   }
 }

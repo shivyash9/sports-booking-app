@@ -49,9 +49,12 @@ export class BookingService {
   }
 
   // Save token and password_digest to localStorage
-  saveCredentials(passwordDigest: string, token: string = 'not_implemented') {
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('user', passwordDigest);
+  saveCredentials(
+    passwordDigest: string,
+    username: string = 'not_implemented'
+  ) {
+    localStorage.setItem('authToken', passwordDigest);
+    localStorage.setItem('user', username);
   }
 
   // Get token from localStorage

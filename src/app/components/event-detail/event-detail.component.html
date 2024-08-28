@@ -26,4 +26,12 @@
       <p>{{ event.available_seats }}</p>
     </div>
   </div>
+
+  <button
+    class="btn btn-success"
+    (click)="onBookNow()"
+    [disabled]="event.available_seats === 0"
+  >
+    Book Now
+  </button>
 </div>

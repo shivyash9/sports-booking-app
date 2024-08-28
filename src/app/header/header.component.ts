@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   isLoggedIn: boolean = false;
-
+  user_name = '';
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -17,6 +17,7 @@ export class HeaderComponent {
 
   checkLoginStatus(): void {
     this.isLoggedIn = !!localStorage.getItem('user');
+    this.user_name = localStorage.getItem('user') || '';
     if (!!this.isLoggedIn) {
       this.router.navigate(['/']);
     }

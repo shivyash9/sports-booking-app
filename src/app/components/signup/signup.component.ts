@@ -17,7 +17,7 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.password !== this.confirmPassword) {
-      console.error('Passwords do not match');
+      window.alert('Passwords do not match');
       return;
     }
 

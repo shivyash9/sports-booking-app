@@ -22,7 +22,7 @@ export class SignupComponent {
     }
 
     this.bookingService
-      .signUp(this.username, this.email, this.password)
+      .signUp(this.email, this.username, this.password)
       .subscribe(
         (response) => {
           window.alert('Signup successful');

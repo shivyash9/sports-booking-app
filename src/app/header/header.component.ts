@@ -27,6 +27,10 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
   }
 
+  logoClicked() {
+    window.location.reload();
+  }
+
   logout(): void {
     localStorage.removeItem('user');
     this.isLoggedIn = false;

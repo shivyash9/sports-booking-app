@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HomeComponent } from './components/home/home.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { BookComponent } from './components/book/book.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { BookingService } from './services/booking.service';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ScheduleComponent,
+    BookComponent,
+    ProfileComponent,
+    HeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

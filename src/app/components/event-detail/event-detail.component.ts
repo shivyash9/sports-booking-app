@@ -37,7 +37,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   onBookNow() {
-    if (!!this.user_id) {
+    if (!this.user_id) {
       this.router.navigate(['/login']);
       return;
     }

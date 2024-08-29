@@ -33,6 +33,7 @@ export class HeaderComponent {
 
   logout(): void {
     localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
     this.isLoggedIn = false;
     window.location.reload();
 

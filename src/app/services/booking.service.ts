@@ -15,6 +15,15 @@ export class BookingService {
     return this.http.get<any[]>(`${this.baseUrl}/events/index`);
   }
 
+  // Fetch all events
+  getUserEvents(userId: number): Observable<any[]> {
+    const params = new HttpParams().set('user_id', userId.toString());
+
+    return this.http.get<any[]>(`${this.baseUrl}/users/my_orders`, {
+      params: params,
+    });
+  }
+
   // Fetch a specific event by ID
   getEventById(eventId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/events/${eventId}`);

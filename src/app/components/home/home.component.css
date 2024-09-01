@@ -125,8 +125,16 @@
 
 .card-pill {
   position: absolute;
-  top: 11px;
-  left: -36px;
+  bottom: 25px;
+  right: -34px;
+  z-index: 5;
+  transform: rotate(-45deg);
+}
+
+.card-top-pill {
+  position: absolute;
+  top: 16px;
+  left: -29px;
   z-index: 5;
   transform: rotate(-45deg);
 }

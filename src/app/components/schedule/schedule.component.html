@@ -1,1 +1,37 @@
-<p>schedule works!</p>
+<div class="schedule-container">
+  <h1 class="page-title">My Schedule</h1>
+  <div class="events-list">
+    <div *ngFor="let event of schedule$ | async" class="event-card">
+      <a [routerLink]="['/event', event.id]" class="event-link">
+        <div class="event-image-container">
+          <img [src]="event.image" alt="{{ event.name }}" class="event-image" />
+        </div>
+        <div class="event-content">
+          <div class="event-header">
+            <h2 class="event-title">{{ event.name }}</h2>
+            <span class="event-time">
+              {{ event.start_time | date : "short" }} -
+              {{ event.end_time | date : "short" }}
+            </span>
+          </div>
+          <p class="event-description">{{ event.description }}</p>
+          <div class="event-details">
+            <div class="event-sport">
+              <h3>Sport:</h3>
+              <p>{{ event.sport.name }}</p>
+            </div>
+            <div class="event-location">
+              <h3>Location:</h3>
+              <p>{{ event.location.name }}</p>
+              <p>{{ event.location.address }}, {{ event.location.pincode }}</p>
+            </div>
+            <div class="event-seats">
+              <h3>Booked Seats:</h3>
+              <p>{{ event.booked_seats }}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

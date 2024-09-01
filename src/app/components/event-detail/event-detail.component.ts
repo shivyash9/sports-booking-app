@@ -10,6 +10,7 @@ import { BookingService } from '../../services/booking.service';
 export class EventDetailComponent implements OnInit {
   event: any;
   user_id: number | null = null;
+  seats: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -17,7 +18,6 @@ export class EventDetailComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {
     const authToken = localStorage.getItem('authToken');
-    console.log(authToken);
     if (!!authToken) {
       this.user_id = parseInt(authToken);
     }
@@ -41,17 +41,19 @@ export class EventDetailComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
+    this.cdr.detectChanges();
     if (this.event.available_seats > 0 && !!this.user_id) {
-      this.eventService.bookSlot(this.user_id, this.event.id).subscribe(
-        (response) => {
-          alert('Booking successful!');
-          window.location.reload();
-        },
-        (error) => {
-          console.error('Booking failed', error);
-          alert('Booking failed. Please try again later.');
-        }
-      );
+      this.eventService
+        .bookSlot(this.user_id, this.event.id, this.seats)
+        .subscribe(
+          (response) => {
+            alert('Booking successful!: ' + response.message);
+            window.location.reload();
+          },
+          (error) => {
+            alert(error.error.error);
+          }
+        );
     } else {
       alert('No seats available.');
     }

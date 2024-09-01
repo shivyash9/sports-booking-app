@@ -21,10 +21,11 @@ export class BookingService {
   }
 
   // Book a slot (create an order)
-  bookSlot(userId: number, eventId: number): Observable<any> {
+  bookSlot(userId: number, eventId: number, seats: number): Observable<any> {
     const params = new HttpParams()
       .set('user_id', userId.toString())
-      .set('event_id', eventId.toString());
+      .set('event_id', eventId.toString())
+      .set('seats', seats.toString());
 
     return this.http.post<any>(`${this.baseUrl}/orders`, null, { params });
   }

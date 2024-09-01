@@ -1,0 +1,20 @@
+<div
+  class="pill"
+  [style.width.px]="width"
+  [ngClass]="{
+    new: seats >= 100,
+    'sold-out': seats === 0,
+    'book-fast': seats > 0 && seats < 100
+  }"
+>
+  <div class="interested-animation-container">
+    <div class="interested-animation-block-1"></div>
+    <div class="interested-animation-block-2"></div>
+  </div>
+  {{ seats >= 100 ? "New" : seats === 0 ? "Sold Out" : "Book fast" }}
+  <img
+    src="https://files.codingninjas.in/stars-25957.svg"
+    alt="stars"
+    *ngIf="showStars"
+  />
+</div>

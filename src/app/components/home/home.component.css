@@ -43,6 +43,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .event-card:hover {
@@ -120,4 +121,12 @@
 
 .event-link {
   text-decoration: none;
+}
+
+.card-pill {
+  position: absolute;
+  top: 11px;
+  left: -36px;
+  z-index: 5;
+  transform: rotate(-45deg);
 }

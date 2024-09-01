@@ -84,6 +84,17 @@
   color: #666666;
 }
 
+.map-container {
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  border: 0;
+  border-radius: 8px;
+}
+
 .booking-form {
   background-color: #f0f8ff;
   padding: 20px;

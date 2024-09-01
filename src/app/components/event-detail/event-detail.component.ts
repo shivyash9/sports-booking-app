@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookingService } from '../../services/booking.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-detail',
@@ -11,11 +12,14 @@ export class EventDetailComponent implements OnInit {
   event: any;
   user_id: number | null = null;
   seats: any;
+  safeIframeUrl!: SafeResourceUrl;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private eventService: BookingService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private sanitizer: DomSanitizer
   ) {
     const authToken = localStorage.getItem('authToken');
     if (!!authToken) {
@@ -30,6 +34,9 @@ export class EventDetailComponent implements OnInit {
     if (!isNaN(id)) {
       this.eventService.getEventById(id).subscribe((event) => {
         this.event = event;
+        this.safeIframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.event.location.iframe
+        );
       });
     } else {
       console.error('Invalid event ID');

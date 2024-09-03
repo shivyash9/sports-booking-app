@@ -1,70 +1,127 @@
 <div class="home-container">
-  <h1 class="page-title">Upcoming Events</h1>
-
-  <!-- Filter Section -->
-  <div class="filter-section">
-    <input
-      type="text"
-      [(ngModel)]="filterName"
-      (ngModelChange)="filterEvents()"
-      placeholder="Filter by event name"
-      class="filter-input"
-    />
-    <input
-      type="text"
-      [(ngModel)]="filterPincode"
-      (ngModelChange)="filterEvents()"
-      placeholder="Filter by pin code"
-      class="filter-input"
-    />
+  <!-- Upcoming Events -->
+  <div class="upcoming-events-section">
+    <h1 class="page-title">Upcoming Events</h1>
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <input
+        type="text"
+        [(ngModel)]="filterName"
+        (ngModelChange)="filterEvents()"
+        placeholder="Filter by event name"
+        class="filter-input"
+      />
+      <input
+        type="text"
+        [(ngModel)]="filterPincode"
+        (ngModelChange)="filterEvents()"
+        placeholder="Filter by pin code"
+        class="filter-input"
+      />
+    </div>
+    <div *ngIf="filteredEvents.length === 0" class="no-events">
+      <p>No upcoming events available.</p>
+    </div>
+    <div class="events-list">
+      <div *ngFor="let event of filteredEvents" class="event-card">
+        <app-pill-card
+          *ngIf="event.event_visibility == 'public'"
+          [showStars]="true"
+          [width]="120"
+          [seats]="event.available_seats"
+          class="card-pill"
+        ></app-pill-card>
+        <a [routerLink]="['/event', event.id]" class="event-link">
+          <div class="event-image-container">
+            <img
+              [src]="event.image"
+              alt="{{ event.name }}"
+              class="event-image"
+            />
+          </div>
+          <div class="event-content">
+            <div class="event-header">
+              <h2 class="event-title">{{ event.name }}</h2>
+              <span class="event-time">
+                {{ event.start_time | date : "short" }} -
+                {{ event.end_time | date : "short" }}
+              </span>
+            </div>
+            <p class="event-description">{{ event.description }}</p>
+            <div class="event-details">
+              <div class="event-sport">
+                <h3>Sport:</h3>
+                <p>{{ event.sport.name }}</p>
+              </div>
+              <div class="event-location">
+                <h3>Location:</h3>
+                <p>{{ event.location.name }}</p>
+                <p>
+                  {{ event.location.address }}, {{ event.location.pincode }}
+                </p>
+              </div>
+              <div class="event-seats">
+                <h3>Available Seats:</h3>
+                <p>{{ event.available_seats }}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="events-list">
-    <div *ngFor="let event of filteredEvents" class="event-card">
-      <app-pill-card
-        *ngIf="event.event_visibility == 'private'"
-        [showStars]="true"
-        [width]="120"
-        [text]="'Private'"
-        class="card-top-pill"
-      ></app-pill-card>
-      <app-pill-card
-        *ngIf="event.event_visibility == 'public'"
-        [showStars]="true"
-        [width]="120"
-        [seats]="event.available_seats"
-        class="card-pill"
-      ></app-pill-card>
-      <a [routerLink]="['/event', event.id]" class="event-link">
-        <div class="event-image-container">
-          <img [src]="event.image" alt="{{ event.name }}" class="event-image" />
-        </div>
-        <div class="event-content">
-          <div class="event-header">
-            <h2 class="event-title">{{ event.name }}</h2>
-            <span class="event-time">
-              {{ event.start_time | date : "short" }} -
-              {{ event.end_time | date : "short" }}
-            </span>
+  <!-- Your Hosted Events -->
+  <div class="hosted-events-section">
+    <h2>Your Hosted Events</h2>
+    <div *ngIf="hostedEvents.length === 0" class="no-events">
+      <p>No hosted events available.</p>
+    </div>
+    <div class="events-list">
+      <div *ngFor="let event of hostedEvents" class="event-card">
+        <app-pill-card
+          [showStars]="true"
+          [width]="120"
+          [text]="'Private'"
+          class="card-top-pill"
+        ></app-pill-card>
+        <a [routerLink]="['/event', event.id]" class="event-link">
+          <div class="event-image-container">
+            <img
+              [src]="event.image"
+              alt="{{ event.name }}"
+              class="event-image"
+            />
           </div>
-          <p class="event-description">{{ event.description }}</p>
-          <div class="event-details">
-            <div class="event-sport">
-              <h3>Sport:</h3>
-              <p>{{ event.sport.name }}</p>
+          <div class="event-content">
+            <div class="event-header">
+              <h2 class="event-title">{{ event.name }}</h2>
+              <span class="event-time">
+                {{ event.start_time | date : "short" }} -
+                {{ event.end_time | date : "short" }}
+              </span>
             </div>
-            <div class="event-location">
-              <h3>Location:</h3>
-              <p>{{ event.location.name }}</p>
-              <p>{{ event.location.address }}, {{ event.location.pincode }}</p>
-            </div>
-            <div class="event-seats">
-              <h3>Available Seats:</h3>
-              <p>{{ event.available_seats }}</p>
+            <p class="event-description">{{ event.description }}</p>
+            <div class="event-details">
+              <div class="event-sport">
+                <h3>Sport:</h3>
+                <p>{{ event.sport.name }}</p>
+              </div>
+              <div class="event-location">
+                <h3>Location:</h3>
+                <p>{{ event.location.name }}</p>
+                <p>
+                  {{ event.location.address }}, {{ event.location.pincode }}
+                </p>
+              </div>
+              <div class="event-seats">
+                <h3>Available Seats:</h3>
+                <p>{{ event.available_seats }}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   </div>
 </div>

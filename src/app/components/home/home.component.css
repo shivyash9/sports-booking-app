@@ -32,6 +32,7 @@
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+  margin-bottom: 80px;
 }
 
 .event-card {
@@ -44,6 +45,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 360px;
 }
 
 .event-card:hover {
@@ -137,4 +139,9 @@
   left: -29px;
   z-index: 5;
   transform: rotate(-45deg);
+}
+
+.hosted-events-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
 }

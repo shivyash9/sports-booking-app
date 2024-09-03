@@ -1,24 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BookingService } from '../../services/booking.service';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   events: any[] = [];
   filteredEvents: any[] = [];
+  hostedEvents: any[] = [];
   filterName: string = '';
   filterPincode: string = '';
   private subscription: Subscription = new Subscription();
 
-  constructor(
-    private bookingService: BookingService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private bookingService: BookingService) {}
 
   ngOnInit(): void {
     this.fetchEvents();
@@ -29,7 +26,12 @@ export class HomeComponent implements OnInit {
       this.bookingService.getEvents().subscribe(
         (events: any[]) => {
           this.events = events;
-          this.filteredEvents = this.events;
+          this.hostedEvents = this.events.filter(
+            (event) => event.event_visibility === 'private'
+          );
+          this.filteredEvents = this.events.filter(
+            (event) => event.event_visibility === 'public'
+          );
         },
         (error: any) => {
           console.error('Error fetching events', error);
@@ -46,7 +48,7 @@ export class HomeComponent implements OnInit {
       const pincodeMatch = this.filterPincode
         ? event.location.pincode.includes(this.filterPincode)
         : true;
-      return nameMatch && pincodeMatch;
+      return event.event_visibility === 'public' && nameMatch && pincodeMatch;
     });
   }
 

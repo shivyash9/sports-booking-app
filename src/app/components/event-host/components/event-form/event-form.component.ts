@@ -44,6 +44,7 @@ export class EventFormComponent implements OnInit {
     const locationIdControl = this.eventForm.get('location_id');
     const startTimeControl = this.eventForm.get('start_time');
     const endTimeControl = this.eventForm.get('end_time');
+    const imageControl = this.eventForm.get('image');
     if (nameControl) formData.append('name', nameControl.value);
     if (descriptionControl)
       formData.append('description', descriptionControl.value);
@@ -54,15 +55,14 @@ export class EventFormComponent implements OnInit {
       formData.append('location_id', locationIdControl.value);
     if (startTimeControl) formData.append('start_time', startTimeControl.value);
     if (endTimeControl) formData.append('end_time', endTimeControl.value);
-    if (this.imageFile) {
-      formData.append('image', this.imageFile);
-    }
+    if (imageControl) formData.append('image', imageControl.value);
+
     this.eventService.createEvent(formData).subscribe(
       (response) => {
-        console.log('Event hosted successfully', response);
+        window.alert(response);
       },
       (error) => {
-        console.error('Error hosting event', error);
+        window.alert(error);
       }
     );
   }

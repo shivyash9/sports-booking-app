@@ -21,13 +21,15 @@
 
   <div class="events-list">
     <div *ngFor="let event of filteredEvents" class="event-card">
-      <!-- <app-pill-card
+      <app-pill-card
+        *ngIf="event.event_visibility == 'private'"
         [showStars]="true"
         [width]="120"
-        [text]="'Public'"
+        [text]="'Private'"
         class="card-top-pill"
-      ></app-pill-card> -->
+      ></app-pill-card>
       <app-pill-card
+        *ngIf="event.event_visibility == 'public'"
         [showStars]="true"
         [width]="120"
         [seats]="event.available_seats"

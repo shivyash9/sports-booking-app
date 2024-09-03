@@ -72,7 +72,7 @@
   </div>
 
   <!-- Your Hosted Events -->
-  <div class="hosted-events-section">
+  <div class="hosted-events-section" *ngIf="!!authToken">
     <h2>Your Hosted Events</h2>
     <div *ngIf="hostedEvents.length === 0" class="no-events">
       <p>No hosted events available.</p>

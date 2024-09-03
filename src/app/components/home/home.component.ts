@@ -13,9 +13,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   hostedEvents: any[] = [];
   filterName: string = '';
   filterPincode: string = '';
+  user_id: number | null = null;
+  authToken: string | null = null;
   private subscription: Subscription = new Subscription();
 
-  constructor(private bookingService: BookingService) {}
+  constructor(private bookingService: BookingService) {
+    const userID = localStorage.getItem('user_id');
+    this.authToken = localStorage.getItem('authToken');
+    if (!!userID) {
+      this.user_id = parseInt(userID);
+    }
+  }
 
   ngOnInit(): void {
     this.fetchEvents();

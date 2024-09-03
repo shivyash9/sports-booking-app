@@ -1,0 +1,37 @@
+<div class="form-group">
+  <label for="sport">Sport:</label>
+  <select id="sport" (change)="onSportChange($event)" [formControl]="control">
+    <option *ngFor="let sport of sports" [value]="sport.id">
+      {{ sport.name }}
+    </option>
+    <option value="new">Create New Sport</option>
+  </select>
+</div>
+
+<div *ngIf="showNewSportForm" class="new-sport-form">
+  <h3>Create New Sport</h3>
+  <label for="newSportName">Name:</label>
+  <input
+    id="newSportName"
+    [(ngModel)]="newSport.name"
+    type="text"
+    placeholder="Enter sport name"
+  />
+
+  <label for="newSportDescription">Description:</label>
+  <textarea
+    id="newSportDescription"
+    [(ngModel)]="newSport.description"
+    placeholder="Enter sport description"
+  ></textarea>
+
+  <label for="newSportImage">Image URL:</label>
+  <input
+    id="newSportImage"
+    [(ngModel)]="newSport.image"
+    type="text"
+    placeholder="Enter image URL"
+  />
+
+  <button (click)="createSport()">Create Sport</button>
+</div>

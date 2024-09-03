@@ -1,0 +1,142 @@
+/* Style the sport selection dropdown */
+#sport {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Style the new sport form container */
+div[ngIf="showNewSportForm"] {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Style the labels within the new sport form */
+div[ngIf="showNewSportForm"] label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Style the input fields within the new sport form */
+div[ngIf="showNewSportForm"] input[type="text"],
+div[ngIf="showNewSportForm"] textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Style the textarea within the new sport form */
+div[ngIf="showNewSportForm"] textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Style the file input within the new sport form */
+div[ngIf="showNewSportForm"] input[type="file"] {
+  margin-bottom: 20px;
+}
+
+/* Style the create sport button */
+div[ngIf="showNewSportForm"] button {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the create sport button */
+div[ngIf="showNewSportForm"] button:hover {
+  background-color: #45a049;
+}
+
+/* Styling for the new sport form container */
+.new-sport-form {
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header styling */
+.new-sport-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Styling for form labels */
+.new-sport-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Styling for input fields and textarea */
+.new-sport-form input[type="text"],
+.new-sport-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.new-sport-form input[type="text"]:focus,
+.new-sport-form textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Styling for textarea */
+.new-sport-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Styling for the button */
+.new-sport-form button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.new-sport-form button:hover {
+  background-color: #45a049;
+}
+
+.new-sport-form button:active {
+  transform: scale(0.98);
+}

@@ -1,0 +1,48 @@
+<div class="form-group">
+  <label for="location">Location:</label>
+  <select
+    id="location"
+    (change)="onLocationChange($event)"
+    [formControl]="control"
+  >
+    <option *ngFor="let location of locations" [value]="location.id">
+      {{ location.name }}
+    </option>
+    <option value="new">Create New Location</option>
+  </select>
+</div>
+
+<div *ngIf="showNewLocationForm" class="new-location-form">
+  <h3>Create New Location</h3>
+  <label for="newLocationName">Name:</label>
+  <input
+    id="newLocationName"
+    [(ngModel)]="newLocation.name"
+    type="text"
+    placeholder="Enter location name"
+  />
+
+  <label for="newLocationAddress">Address:</label>
+  <textarea
+    id="newLocationAddress"
+    [(ngModel)]="newLocation.address"
+    placeholder="Enter address"
+  ></textarea>
+
+  <label for="newLocationPincode">Pincode:</label>
+  <input
+    id="newLocationPincode"
+    [(ngModel)]="newLocation.pincode"
+    type="text"
+    placeholder="Enter pincode"
+  />
+
+  <label for="newLocationIframe">Google Maps Iframe:</label>
+  <textarea
+    id="newLocationIframe"
+    [(ngModel)]="newLocation.iframe"
+    placeholder="Enter Google Maps iframe"
+  ></textarea>
+
+  <button (click)="createLocation()">Create Location</button>
+</div>

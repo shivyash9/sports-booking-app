@@ -14,6 +14,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { PillCardComponent } from './components/pill-card/pill-card.component';
 import { AuthInterceptor } from '../app/auth.interceptor';
 import { EventHostComponent } from './components/event-host/event-host.component';
+import { EventFormComponent } from './components/event-host/components/event-form/event-form.component';
+import { SportSelectComponent } from './components/event-host/components/sport-select/sport-select.component';
+import { LocationSelectComponent } from './components/event-host/components/location-select/location-select.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,8 +30,17 @@ import { EventHostComponent } from './components/event-host/event-host.component
     SignupComponent,
     PillCardComponent,
     EventHostComponent,
+    EventFormComponent,
+    SportSelectComponent,
+    LocationSelectComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

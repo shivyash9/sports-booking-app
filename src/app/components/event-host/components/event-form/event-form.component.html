@@ -1,0 +1,40 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="eventForm">
+  <div>
+    <label for="name">Event Name:</label>
+    <input id="name" formControlName="name" type="text" />
+  </div>
+
+  <div>
+    <label for="description">Event Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div>
+    <label for="totalSeats">Total Seats:</label>
+    <input id="totalSeats" formControlName="total_seats" type="number" />
+  </div>
+
+  <app-sport-select
+    (selectedSportId)="onSportIdChange($event)"
+  ></app-sport-select>
+  <app-location-select
+    (selectedLocationId)="onLocationIdChange($event)"
+  ></app-location-select>
+
+  <div>
+    <label for="startTime">Start Time:</label>
+    <input id="startTime" formControlName="start_time" type="datetime-local" />
+  </div>
+
+  <div>
+    <label for="endTime">End Time:</label>
+    <input id="endTime" formControlName="end_time" type="datetime-local" />
+  </div>
+
+  <div>
+    <label for="imageUrl">Event Image URL:</label>
+    <input id="imageUrl" formControlName="image" type="text" />
+  </div>
+
+  <button type="submit">Host Event</button>
+</form>

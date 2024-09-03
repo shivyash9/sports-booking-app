@@ -11,6 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class EventDetailComponent implements OnInit {
   event: any;
   user_id: number | null = null;
+  authToken: string | null = null;
   seats: any;
   safeIframeUrl!: SafeResourceUrl;
 
@@ -21,9 +22,10 @@ export class EventDetailComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private sanitizer: DomSanitizer
   ) {
-    const authToken = localStorage.getItem('authToken');
-    if (!!authToken) {
-      this.user_id = parseInt(authToken);
+    const userID = localStorage.getItem('user_id');
+    this.authToken = localStorage.getItem('authToken');
+    if (!!userID) {
+      this.user_id = parseInt(userID);
     }
   }
 
@@ -44,7 +46,7 @@ export class EventDetailComponent implements OnInit {
   }
 
   onBookNow() {
-    if (!this.user_id) {
+    if (!this.authToken) {
       this.router.navigate(['/login']);
       return;
     }

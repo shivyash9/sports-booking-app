@@ -11,15 +11,17 @@ import { Router } from '@angular/router';
 export class ScheduleComponent implements OnInit {
   schedule$!: Observable<any[]>;
   user_id: number | null = null;
+  authToken: string | null = null;
   constructor(private bookingService: BookingService, private router: Router) {
-    const authToken = localStorage.getItem('authToken');
-    if (!!authToken) {
-      this.user_id = parseInt(authToken);
+    const userID = localStorage.getItem('user_id');
+    this.authToken = localStorage.getItem('authToken');
+    if (!!userID) {
+      this.user_id = parseInt(userID);
     }
   }
 
   ngOnInit(): void {
-    if (this.user_id) {
+    if (!!this.user_id && !!this.authToken) {
       this.schedule$ = this.bookingService.getUserEvents(this.user_id);
     } else {
       this.router.navigate(['/login']);

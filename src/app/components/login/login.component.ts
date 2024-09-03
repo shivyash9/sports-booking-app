@@ -16,9 +16,10 @@ export class LoginComponent {
   onSubmit() {
     this.bookingService.logIn(this.email, this.password).subscribe(
       (response) => {
-        const id = response.user.id;
         const username = response.user.username;
-        this.bookingService.saveCredentials(id, username);
+        const token = response.token;
+        const userid = response.user.id;
+        this.bookingService.saveCredentials(token, userid, username);
         window.location.reload();
       },
       (error) => {

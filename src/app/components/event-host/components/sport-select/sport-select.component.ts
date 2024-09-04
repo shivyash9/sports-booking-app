@@ -42,6 +42,7 @@ export class SportSelectComponent implements OnInit {
       this.sports.push(sport);
       this.control.setValue(sport.id);
       this.showNewSportForm = false;
+      this.selectedSportId.emit(sport.id);
     });
     this.showNewSportForm = false;
   }

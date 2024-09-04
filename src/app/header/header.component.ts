@@ -18,9 +18,9 @@ export class HeaderComponent {
   checkLoginStatus(): void {
     this.isLoggedIn = !!localStorage.getItem('user');
     this.user_name = localStorage.getItem('user') || '';
-    if (!!this.isLoggedIn) {
-      this.router.navigate(['/']);
-    }
+    // if (!!this.isLoggedIn) {
+    //   this.router.navigate(['/']);
+    // }
   }
 
   login(): void {

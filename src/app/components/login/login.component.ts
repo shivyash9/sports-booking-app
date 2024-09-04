@@ -20,7 +20,9 @@ export class LoginComponent {
         const token = response.token;
         const userid = response.user.id;
         this.bookingService.saveCredentials(token, userid, username);
-        window.location.reload();
+        this.router.navigate(['/']).then(() => {
+          window.location.reload();
+        });
       },
       (error) => {
         window.alert('Login failed');

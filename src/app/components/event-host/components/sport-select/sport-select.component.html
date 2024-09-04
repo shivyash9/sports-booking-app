@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label for="sport">Sport:</label>
+  <h4 for="sport">Sport:</h4>
   <select id="sport" (change)="onSportChange($event)" [formControl]="control">
     <option *ngFor="let sport of sports" [value]="sport.id">
       {{ sport.name }}

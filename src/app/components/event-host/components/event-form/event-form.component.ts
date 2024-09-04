@@ -59,10 +59,11 @@ export class EventFormComponent implements OnInit {
 
     this.eventService.createEvent(formData).subscribe(
       (response) => {
+        console.log(response);
         window.alert(response);
       },
       (error) => {
-        window.alert(error);
+        window.alert(error.error.error);
       }
     );
   }
